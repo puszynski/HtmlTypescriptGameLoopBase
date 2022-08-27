@@ -1,2 +1,0 @@
-note! 
-    => use 'Compile Hero' extension (VS code) to convert .ts files to .js (after saving .ts file)
