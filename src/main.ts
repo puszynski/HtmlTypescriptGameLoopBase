@@ -24,16 +24,15 @@ class GameLooper {
         this.ctx.translate(this.canvas.width/2, this.canvas.height/2);
 
         this.gameMap = new GameMap();
-        this.gameObjects = [new Human(500,200)];
+        this.gameObjects = [new Human(200,200)];
         this.Render();
     }
 
     private Render = () => {
         this.ctx.clearRect(0,0,1200,800);
-        this.gameMap.draw(this.ctx);
+        this.gameMap.draw(this.ctx);//todo draw map once per 60 fps (or more, dont clean it every time)
         this.gameObjects.forEach( (item) => { item.draw(this.ctx)});
 
-        //this.human.draw(this.ctx);
         requestAnimationFrame(this.Render) //gameLoop
     }
 }

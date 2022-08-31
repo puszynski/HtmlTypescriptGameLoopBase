@@ -19,7 +19,7 @@ class GameLooper {
         // All coordinates below center canvas are negative
         this.ctx.translate(this.canvas.width / 2, this.canvas.height / 2);
         this.gameMap = new GameMap();
-        this.gameObjects = [new Human(500, 200)];
+        this.gameObjects = [new Human(200, 200)];
         this.Render();
     }
 }

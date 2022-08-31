@@ -8,14 +8,16 @@ export class Human {
         this.humanWidth = this.humanHeight / 2;
     }
     draw(ctx) {
-        //todo - translate position
-        //draw human in 0,0 position
+        ctx.save();
+        //translate all objects unitl restore()
+        ctx.translate(this.positionX, this.positionY);
+        //draw human in 0,0 position:
         this.drawHead(ctx);
         this.drawBody(ctx);
         this.drawItems();
         this.drawTaskItems();
-        this.drawArea(ctx);
-        //todo - reset position
+        //this.drawArea(ctx); 
+        ctx.restore(); //reset translate to previous saved 
     }
     drawArea(ctx) {
         ctx.beginPath();
@@ -27,9 +29,10 @@ export class Human {
     }
     drawHead(ctx) {
         let radius = this.humanWidth / 4;
+        ctx.filter = "blur(16px)"; // => efekt blur - można pobawić się przestrzenią => "blur(16px)"; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter
         ctx.beginPath();
         ctx.setLineDash([]);
-        ctx.arc(this.positionX, this.positionY - this.humanHeight / 2 + radius, radius, 0, Math.PI * 2, false);
+        ctx.arc(0, 0 - this.humanHeight / 2 + radius, radius, 0, Math.PI * 2, false);
         ctx.fillStyle = "white";
         ctx.fill();
         ctx.closePath();
@@ -41,7 +44,7 @@ export class Human {
         //3 ways to draw line: L - line to, H - draw horizonal line, V - vertical line, 
         //polygon - c - cubic curve => c dx1 dy1, dx2 dy2, dx dy ..and others: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths        
         //z => Close Path
-        let bodyPath = new Path2D('m 0,0 c -6.77,-17.03 -14.73,-47.47 21.51,-47.99 36.24,-0.51 31.75,27.11 23.57,46.58 -8.17,19.46 -38.32,18.44 -45.09,1.41 z');
+        let bodyPath = new Path2D('m -22,20 c -6.77,-17.03 -14.73,-47.47 21.51,-47.99 36.24,-0.51 31.75,27.11 23.57,46.58 -8.17,19.46 -38.32,18.44 -45.09,1.41 z');
         ctx.fillStyle = "green";
         ctx.fill(bodyPath);
         // ctx.moveTo(this.positionX - this.humanWidth / 2, this.positionY - this.humanHeight/5);
