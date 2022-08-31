@@ -9,4 +9,5 @@
 //     public Finish_CyclicEveryDay: number; //0-24;
 //     public Status: enum; //todo, in progress, cancelled, completed
 //     public WorkType: enum; //enum - co to za czynność, długa lista - na jej podstawie jakieś działnia
+//ExperimentWithFire => simple fire from small branches => from bigger brenches => with stones => with close contructions like chimney + moving fire techniques + start fire techniques
 // }

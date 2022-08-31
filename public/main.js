@@ -4,9 +4,8 @@ class GameLooper {
     constructor() {
         this.Render = () => {
             this.ctx.clearRect(0, 0, 1200, 800);
-            this.gameMap.draw(this.ctx);
+            this.gameMap.draw(this.ctx); //todo draw map once per 60 fps (or more, dont clean it every time)
             this.gameObjects.forEach((item) => { item.draw(this.ctx); });
-            //this.human.draw(this.ctx);
             requestAnimationFrame(this.Render); //gameLoop
         };
         this.canvas = document.getElementById('gameCanvas');
