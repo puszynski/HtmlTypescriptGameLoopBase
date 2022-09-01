@@ -6,14 +6,35 @@
         Game name
     </title>
     <style>
-    	* { padding: 0; margin: 0; }
-    	canvas { background: rgb(46, 46, 46); display: block; margin: 0 auto; }
+    	* { 
+        padding: 0; 
+        margin: 0; 
+      }
+    	/* canvas { background: rgb(46, 46, 46); display: block; margin: 0 auto; } */
+
+      .canvasHolder {
+        position: relative;
+        height: 1200px; width: 500px; /* based on your canvas size*/
+      }
+      .canvas {
+        position: absolute;
+        top: 0; left: 0;        
+        /* background: rgb(46, 46, 46); */
+      }
     </style>
   </head>
   <body>
-    <p id="fps">fps: 0</p>
-    <canvas id="gameCanvas" width="1200" height="800"></canvas>
+
+    <div class="canvasHolder">
+      <canvas id="backgoundCanvas" class="canvas" width="1200" height="800"></canvas>
+      <!-- backgroudAnimationCanvas -->
+      <canvas id="shodowCanvas" class="canvas" width="1200" height="800"></canvas>
+      <canvas id="gameCanvas" class="canvas" width="1200" height="800"></canvas>
+      <canvas id="effectsCanvas" class="canvas" width="1200" height="800"></canvas> <!-- e.g. rain, fog, storm -->
+    </div>
+    
     <script src="helpers/randomGenerator.js"></script>
-    <script type="module" src="main.js"></script> 
+    <script type="module" src="main.js"></script>
+
   </body>
 </html>

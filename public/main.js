@@ -11,8 +11,6 @@ class GameLooper {
         this.canvas = document.getElementById('gameCanvas');
         ;
         this.ctx = this.canvas.getContext("2d");
-        this.fpsInfo = document.getElementById('fps');
-        this.fpsInfo.innerText = 'fps: loading';
         // set the canvas origin (0,0) to center canvas
         // All coordinates to the left of center canvas are negative
         // All coordinates below center canvas are negative
