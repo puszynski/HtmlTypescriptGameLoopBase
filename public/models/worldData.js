@@ -10,7 +10,8 @@ export class WorldData {
         this.gameDurationInMS = 0;
         this.lastFrameDurtionMS = 0;
     }
-    UpdateWorldTime(currentDate) {
+    UpdateWorldTime() {
+        let currentDate = new Date();
         this.gameDurationInMS = currentDate.getTime() - this.worldStartDate.getTime();
         this.lastFrameDurtionMS = currentDate.getTime() - this.previousFrameDate.getTime();
         //todo ustal ile ma trwać godzina/doba/rok
@@ -18,5 +19,11 @@ export class WorldData {
         //in game:
         // a) 1 hour == 1 min? => 1 day == 24 min => 1 year == 365 * 24 min = 6+ days <- dupa, odpada..
         // b) 1 day == 10 min
+    }
+    DisplayData(worldDataDisplayer) {
+        worldDataDisplayer.innerHTML = "time in game: " + this.gameDurationInMS + " ms (" + this.ConvertMsToTime(this.gameDurationInMS) + ")";
+    }
+    ConvertMsToTime(ms) {
+        return new Date(this.gameDurationInMS).toISOString().slice(11, 19);
     }
 }

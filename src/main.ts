@@ -15,6 +15,7 @@ class GameLooper {
     private gameCtx: CanvasRenderingContext2D;
 
     private worldData: WorldData;
+    private worldDataDisplayer: HTMLElement;
 
     private gameMap: IDrawable;
     private gameObjects: IDrawable[];
@@ -37,6 +38,7 @@ class GameLooper {
         this.gameCtx.translate(this.gameCanvas.width/2, this.gameCanvas.height/2);
 
         this.worldData = new WorldData();
+        this.worldDataDisplayer = document.getElementById('worldData') as HTMLElement;
 
         this.gameMap = new GameMap();
         this.gameObjects = [new Human(0,0), new Human(50,0), new Human(100,0), new Human(150,0)];
@@ -45,6 +47,9 @@ class GameLooper {
 
     private Render = () => {
         this.gameCtx.clearRect(0,0,1200,800);
+
+        this.worldData.UpdateWorldTime();
+        this.worldData.DisplayData(this.worldDataDisplayer);
 
         //todo if - change only when something in bg changes
         this.gameMap.draw(this.backgroundCtx);//todo draw map once per 60 fps (or more, dont clean it every time)
